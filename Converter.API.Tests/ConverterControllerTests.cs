@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using ConverterAPI.Enums;
 namespace Converter.API.Tests{
 
     public class ConverterControllerTests{
@@ -27,77 +28,46 @@ namespace Converter.API.Tests{
            logger = A.Fake<ILogger<ConverterController>>();
            currencyService = A.Fake<ICurrencyReader>();
            countryService = A.Fake<ICountryReader>();
-           var sut = new ConverterController(logger, currencyService,countryService);
-
+          
            fixture = new Fixture();
-        }
+        }             
 
         [Fact]
-        public void Given_Ctor_Null_Then_ArgumentNullException()
-        {            
-            
-          Assert.Throws<ArgumentNullException>(() => new ConverterController(null, null, null));          
-
-        }        
-
-         [Fact]
-        public void When_GetCurrencies_then_Returns_With200StatusCode()
+        public void When_GetCurrencies_then_Returns_CurrencyList()
         {
             //Arrange
             var currencies = new List<Currency> {new Currency("GBP","Pounds")};              
-
-            //Act
-
+            var sut = new ConverterController(logger, currencyService,countryService);            
+            
             A.CallTo(() => currencyService.GetCurrenciesAsync()).Returns(currencies);
 
             //Act
-            var result = sut.GetCurrencies();
-
+            var result = sut.GetCurrencies().GetAwaiter().GetResult();
 
             //Assert
             A.CallTo(() => currencyService.GetCurrenciesAsync()).MustHaveHappenedOnceExactly();
-            Assert.IsType<Task<ActionResult<List<Currency>>>>(result);
-            Assert.NotNull(result);
-            //Assert.Equal(currencies.Count, result.Count());
+            Assert.IsType<ActionResult<List<Currency>>>(result);
+            Assert.NotNull(result);           
 
         } 
+       
         [Fact]
-        public void When_GetCurrencies_Then_Returns_ListOfCurrency()
-        {
-            //Arrange
-            var currencies = fixture.CreateMany<Currency>(3);
-             
-
-            //Act
-
-
-            //Assert
-
-        }
-        [Fact]
-        public void When_GetCountries_Then_Returns_With200StatusCode()
+        public void When_GetCountries_Then_Returns_CountryList()
         {
             //Arrange            
-            var countries = fixture.CreateMany<Country>(3);   
+            var countries = new List<Country> {new Country{ Id = 1, Name= "UK", CurrencyName = CurrencyType.GBP,ExchangeRate = 12}};  
+
+            var sut = new ConverterController(logger, currencyService, countryService);            
+            
+            A.CallTo(() => countryService.GetCountriesAsync()).Returns(countries);
 
             //Act
-
-
-            //Assert
-
-        }
-
-
-        [Fact]
-        public void When_GetCountries_Then_Returns_ListOfCountry()
-        {
-            //Arrange            
-            var countries = fixture.CreateMany<Country>(3);   
-
-            //Act
-
+            var result = sut.GetCountries().GetAwaiter().GetResult();
 
             //Assert
+            A.CallTo(() => countryService.GetCountriesAsync()).MustHaveHappenedOnceExactly();
+            Assert.IsType<ActionResult<List<Country>>>(result);
+            Assert.NotNull(result);
 
         }
 
