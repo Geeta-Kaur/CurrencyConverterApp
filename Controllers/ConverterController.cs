@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,8 +20,8 @@ namespace ConverterAPI.Controllers
         public ConverterController(ILogger<ConverterController> logger, ICurrencyReader currencyService, ICountryReader countryService)
         {
             _logger = logger;
-            _currencyService = currencyService?? throw new ArgumentNullException(nameof(currencyService)); 
-            _countryService = countryService?? throw new ArgumentNullException(nameof(countryService));
+            _currencyService = currencyService; 
+            _countryService = countryService;
         }
 
         [HttpGet]
@@ -52,6 +52,7 @@ namespace ConverterAPI.Controllers
             var result = 2;
             return Ok(result);
         }
+
         private bool ValidInput(ConvertInputModel input){
             return true;
         }
