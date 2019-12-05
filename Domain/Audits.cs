@@ -8,7 +8,11 @@ namespace ConverterAPI.Domain
             LogMessage = message;
             LogDate = logDate;
         }
-      public string LogMessage{ get; private set;}
-      public DateTime LogDate {get; private set;}
+      public string LogMessage{ get; set;}
+      public DateTime LogDate {get;  set;}
+
+      public void Save(){
+          //Commit changes to repo.
+      }
     }
 }
