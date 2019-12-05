@@ -7,6 +7,7 @@ using ConverterAPI.Domain.Read;
 using ConverterAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ConverterAPI.Enums;
 
 namespace ConverterAPI.Controllers
 {
@@ -44,17 +45,48 @@ namespace ConverterAPI.Controllers
 
         [HttpGet("convertinputmodel")]        
         [Route("convertcurrency")]
-        public IActionResult Convert([FromQuery]ConvertInputModel input)
+        public async Task<IActionResult> Convert([FromQuery]ConvertInputModel input)
         {
             //validate input
             if(!ValidInput(input))
-                return BadRequest();
-            var result = 2;
+                return BadRequest("Invalid data");
+
+            decimal exchangeRate = GetCurrentRates(input.ConvertFrom, input.ConvertTo);
+            if(exchangeRate == 0)
+               return NotFound(); 
+           
+            decimal result = Math.Round(exchangeRate* input.ValueToConvert, 2);
+            Audit audit = new Audit ("Rates checked from "+input.ConvertFrom.ToString()+" to "+ input.ConvertTo.ToString(), DateTime.Now );
+            audit.Save();
             return Ok(result);
         }
 
         private bool ValidInput(ConvertInputModel input){
+            if(input == null)
+                return false;
+            
+            if(input.ValueToConvert <= 0)
+                return false;
+
             return true;
         }
+
+        private decimal GetCurrentRates(CurrencyType baseCurrency, CurrencyType currencyToExchange)
+         {
+             switch (baseCurrency)
+             {
+                 case CurrencyType.GBP:
+                    if(currencyToExchange== CurrencyType.EUR)
+                        return 1.16m;
+                    if(currencyToExchange== CurrencyType.USD)
+                        return 1.60m;
+                    if(currencyToExchange== CurrencyType.AUD)
+                        return 2m;  
+                    break;
+                 default:
+                    break;
+             }
+             return 0m;
+         }
     }
 }
