@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using ConverterAPI.Enums;
+
 namespace Converter.API.Tests{
 
     public class ConverterControllerTests{
@@ -55,7 +56,7 @@ namespace Converter.API.Tests{
         public void When_GetCountries_Then_Returns_CountryList()
         {
             //Arrange            
-            var countries = new List<Country> {new Country{ Id = 1, Name= "UK", CurrencyName = CurrencyType.GBP,ExchangeRate = 12}};  
+            var countries = new List<Country> {new Country{ Id = 1, Name= "UK", CurrencyName = CurrencyType.GBP}};  
 
             var sut = new ConverterController(logger, currencyService, countryService);            
             
@@ -87,8 +88,7 @@ namespace Converter.API.Tests{
         public void When_Convert_Valid_Params_Then_Response200OK()
         {
             //Arrange
-            var currencies = fixture.CreateMany<Currency>(3);
-            var countries = fixture.CreateMany<Country>(3);
+           
 
             //Act
 
