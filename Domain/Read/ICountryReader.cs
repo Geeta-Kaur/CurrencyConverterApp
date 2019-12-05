@@ -7,7 +7,6 @@ namespace ConverterAPI.Domain.Read
 {
     public interface ICountryReader
     {
-        public Task<List<Country>> GetCountriesAsync();
-        public Task<Country> GetCountryByCurrencyTypeAsync(CurrencyType currencyType);
+       public Task<List<Country>> GetCountriesAsync();
     }
 }
