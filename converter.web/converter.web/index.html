@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+    <div class="container pt-3">
+
+        <h1> Currency Converter</h1>
+
+
+        <div class="row"> GBP to </div>
+        <div class="clear"></div>
+        <form id="mainForm">
+            <div class="form-group">
+                <div class="row" style="margin: 10px;">
+
+                    <div class="col-md-6">
+                        <select class="form-control" id="curencylist"></select>
+                    </div>
+                    <div class="col-md-1">
+                        Value
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="valueToConvert" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 10px;">
+
+                    <div class="col-md-6">
+                        Converted: <label id="convertedValue" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin: 10px;">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" id="btnConvertCurrency">Convert</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>
