@@ -9,3 +9,4 @@ Unit tests are located in ConverterApp git repo
 
 Use index.html in web.client folder as a User interface of application.
 Recommended to browse in Chrome with CORS unblock extension as client is configured in different domain from api. 
+Please note: screen shots of UI is in web.client folder
