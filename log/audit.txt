@@ -1,0 +1,3 @@
+{"LogMessage":"Rates checked from GBP to USD","LogDate":"2019-12-10T21:52:58.2858813+00:00"}
+{"LogMessage":"Rates checked from GBP to USD","LogDate":"2019-12-10T21:58:08.7340439+00:00"}
+{"LogMessage":"Rates checked from GBP to USD","LogDate":"2019-12-10T21:59:04.6784159+00:00"}

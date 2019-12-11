@@ -29,6 +29,7 @@ namespace ConverterAPI
             services.AddMvc();
             services.AddSingleton<ICountryReader, CountryReader>();
             services.AddSingleton<ICurrencyReader, CurrencyReader>();
+            services.AddSingleton<IAuditReader, AuditReader>();
             services.AddControllers();
         }
 
@@ -40,8 +41,12 @@ namespace ConverterAPI
                 app.UseDeveloperExceptionPage();
             }
 
-          //  app.UseHttpsRedirection();
-            app.UseCors();
+          
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseHttpsRedirection();
+
+          //  app.UseCors();
 
             app.UseRouting();
 

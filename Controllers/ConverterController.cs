@@ -58,6 +58,7 @@ namespace ConverterAPI.Controllers
             decimal result = Math.Round(exchangeRate* input.ValueToConvert, 2);
             Audit audit = new Audit ("Rates checked from "+input.ConvertFrom.ToString()+" to "+ input.ConvertTo.ToString(), DateTime.Now );
             audit.Save();
+            
             return Ok(result);
         }
 

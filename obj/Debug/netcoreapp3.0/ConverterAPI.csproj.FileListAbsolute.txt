@@ -184,3 +184,6 @@ C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\obj\Debug
 C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\obj\Debug\netcoreapp3.0\ConverterAPI.csproj.CopyComplete
 C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\obj\Debug\netcoreapp3.0\ConverterAPI.dll
 C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\obj\Debug\netcoreapp3.0\ConverterAPI.pdb
+C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\bin\Debug\netcoreapp3.0\client\package-lock.json
+C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\bin\Debug\netcoreapp3.0\ConverterAPI.Views.dll
+C:\Users\Trapt .MSI\Documents\GitHub\ConverterApp\CurrencyConverterApp\bin\Debug\netcoreapp3.0\Serilog.dll
