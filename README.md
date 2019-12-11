@@ -4,6 +4,7 @@ API Methods-
 AllCurrencies: http://localhost:5000/api/converter/allcurrencies
 AllCountries: http://localhost:5000/api/converter/allcountries
 Convert : http://localhost:5000/api/converter/convertcurrency?ConvertTo=USD&ConvertFrom=GBP&ValueToConvert=5
+Audit report api: http://localhost:5000/api/audit/report?DateFrom=12/12/2019&DateTo=12/13/2019
 
 Unit tests are located in ConverterApp git repo
 
